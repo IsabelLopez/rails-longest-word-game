@@ -1,0 +1,17 @@
+<div class="container box d-flex flex-column align-items-center">
+  <h1>New game</h1>
+  <ul class="d-flex justify-content-around list-group list-group-horizontal">
+      <% @letters.each do |letter| %>
+        <li class="list-group-item p-3 mb-2 bg-primary text-white border-0 rounded p-4 m-3"> <%= letter %> </li>
+      <% end %>
+  </ul>
+
+  <p> What is the longest word you can find?</p>
+  <form action="/score" method="post">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <%= hidden_field_tag :letters, @letters %>
+    <input type="text" name="word">
+    <input type="submit" value="Play">
+  </form>
+
+</div>
